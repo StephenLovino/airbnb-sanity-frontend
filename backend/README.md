@@ -1,7 +1,7 @@
-# AirBnb Sanity.io Frontend
+# AirBnb Sanity.io Backend
 
 
-This repository is to support my tutorial on how to build an AirBnb Clone with structured content using Sanity.io and Next.js. View the full tutorial [here](https://youtu.be/mx1dbMzd3tU) 📺
+This repository is to support my tutorial on how to build an AirBnb Clone with strucutred content using Sanity.io and Next.js. View the full tutorial [here](https://youtu.be/mx1dbMzd3tU) 📺
 
 In this video I show you how to build an AirBnB Clone, as well as manage all your data visually. We are going to build a backend for the app that defines the relationships between our data thanks to Schemas and Types, and add data using Sanity Studio ( https://www.sanity.io/ )
 
@@ -46,7 +46,7 @@ and much more!
 
 If you get stuck, the Sanity community I was talking about can be found here on the Sanity Exchange (https://www.sanity.io/exchange) and the Sanity Slack Community (https://slack.sanity.io/).
 
-The backend to my project, can be found [here](https://github.com/kubowania/airbnb-sanity-backend)
+The front end to my project, can be found [here](https://github.com/kubowania/airbnb-sanity-frontend)
 
 Google Maps API info can be found [here](https://developers.google.com/maps)
 ____
@@ -60,39 +60,3 @@ Sign up [here](https://bit.ly/JS-tips) for weekly coding tips from my newsletter
 You can also find me on:\
 Twitter: https://twitter.com/ania_kubow \
 Instagram: https://www.instagram.com/aniakubow
-
-
-
-## Getting Started (Local Development)
-
-This repository has been upgraded into a Mono-repo containing both the Next.js frontend and the modern Sanity V3 backend! Follow these instructions to get both systems running locally.
-
-### 1. Start the Sanity CMS Backend
-The Sanity Content Management System (headless CMS) lives in the `backend/lesuite` directory. This is where you can manage all of your Airbnb properties, hosts, reviews, and images.
-
-```bash
-cd backend/lesuite
-npm install
-npm run dev
-```
-Once it starts, open the provided `http://localhost:3333` link in your browser to log in and start creating content! 
-
-> **Important**: This project was recently migrated from the deprecated Sanity V2 to Sanity V3. The legacy code still lives in the `backend/` folder root, but the active studio is exclusively inside `backend/lesuite`.
-
-### 2. Configure the Frontend Environment
-Ensure you have a `.env.local` file at the root of the frontend (`/airbnb-sanity-frontend`) so Next.js knows which Sanity project to pull data from. It should contain your unique Sanity project ID:
-
-```env
-NEXT_PUBLIC_SANITY_PROJECT_ID=b3x05s76
-NEXT_PUBLIC_SANITY_DATASET=production
-```
-
-### 3. Start the Next.js Frontend
-In a new terminal tab at the root directory (`/airbnb-sanity-frontend`), launch the actual Airbnb web application:
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the live site. Any data changes you publish in the Sanity Studio will immediately reflect here!
