@@ -67,6 +67,23 @@ Instagram: https://www.instagram.com/aniakubow
 
 This repository has been upgraded into a Mono-repo containing both the Next.js frontend and the modern Sanity V3 backend! Follow these instructions to get both systems running locally.
 
+### How the Backend Was Created
+
+The original project used Sanity V2 (the legacy code still lives in the `backend/` folder root for reference). Since Sanity V2 has been deprecated, a new Sanity V3 studio was initialized inside `backend/lesuite` using:
+
+```bash
+cd backend
+npm create sanity@latest -- --project b3x05s76 --dataset production --output-path lesuite
+```
+
+This scaffolded a fresh Sanity V3 studio with the project ID `b3x05s76` and `production` dataset. The original V2 schemas (property, host, review, traveller, person, propertyImage) were then manually migrated into the new `backend/lesuite/schemaTypes/` directory and adapted to work with V3's `defineConfig` setup.
+
+**Key differences from V2 to V3:**
+- Studio config moved from `sanity.json` to `sanity.config.ts` and `sanity.cli.ts`
+- Schemas are registered via `schemaTypes/index.ts` instead of the old `schemas/schema.js` `createSchema()` pattern
+- Plugins like Structure Tool and Vision Tool are configured directly in `sanity.config.ts`
+- The studio now runs on `localhost:3333` via `sanity dev` instead of the old `sanity start`
+
 ### 1. Start the Sanity CMS Backend
 The Sanity Content Management System (headless CMS) lives in the `backend/lesuite` directory. This is where you can manage all of your Airbnb properties, hosts, reviews, and images.
 
@@ -75,9 +92,9 @@ cd backend/lesuite
 npm install
 npm run dev
 ```
-Once it starts, open the provided `http://localhost:3333` link in your browser to log in and start creating content! 
+Once it starts, open the provided `http://localhost:3333` link in your browser to log in and start creating content!
 
-> **Important**: This project was recently migrated from the deprecated Sanity V2 to Sanity V3. The legacy code still lives in the `backend/` folder root, but the active studio is exclusively inside `backend/lesuite`.
+> **Important**: The active studio is exclusively inside `backend/lesuite`. The legacy V2 code in the `backend/` root is kept for reference only.
 
 ### 2. Configure the Frontend Environment
 Ensure you have a `.env.local` file at the root of the frontend (`/airbnb-sanity-frontend`) so Next.js knows which Sanity project to pull data from. It should contain your unique Sanity project ID:
